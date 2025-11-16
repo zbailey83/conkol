@@ -7,9 +7,10 @@ interface PromoCardProps {
     description: string;
     buttonContent: React.ReactNode;
     onButtonClick: () => void;
+    platformIcons?: React.ReactNode[];
 }
 
-const PromoCard: React.FC<PromoCardProps> = ({ tag, icon, title, description, buttonContent, onButtonClick }) => {
+const PromoCard: React.FC<PromoCardProps> = ({ tag, icon, title, description, buttonContent, onButtonClick, platformIcons }) => {
     return (
         <div className="relative p-6 sm:p-8 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-900/80 via-[#161B22] to-[#161B22] border border-blue-500/30 shadow-2xl shadow-blue-500/10">
              <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-blue-500/10 blur-3xl rounded-full" />
@@ -30,8 +31,15 @@ const PromoCard: React.FC<PromoCardProps> = ({ tag, icon, title, description, bu
                     <p className="mt-2 text-gray-400 max-w-xl">
                         {description}
                     </p>
+                    {platformIcons && platformIcons.length > 0 && (
+                        <div className="mt-6 flex items-center gap-3">
+                            {platformIcons.map((icon, index) => (
+                                <React.Fragment key={index}>{icon}</React.Fragment>
+                            ))}
+                        </div>
+                    )}
                 </div>
-                <div className="w-full lg:w-auto flex-shrink-0 mt-4 lg:mt-0">
+                <div className="w-full lg:w-auto flex-shrink-0 mt-6 lg:mt-0">
                     <button 
                         onClick={onButtonClick} 
                         className="group w-full lg:w-auto flex items-center justify-center gap-2.5 px-6 py-3 rounded-lg bg-white text-gray-900 font-bold transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-white/20 focus:outline-none focus:ring-4 focus:ring-white/50"

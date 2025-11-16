@@ -30,12 +30,33 @@ const DocumentIconLarge = () => <svg xmlns="http://www.w3.org/2000/svg" classNam
 const ResearchIconSmall = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" /></svg>;
 const PenIconSmall = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" /><path fillRule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clipRule="evenodd" /></svg>;
 
+// Small Platform Icons for PromoCards
+const XLogoSmall = () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="w-4 h-4" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.6.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/></svg>;
+const LinkedInLogoSmall = () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="w-4 h-4" viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>;
+const InstagramLogoSmall = () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="w-4 h-4" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.703.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 8 0zm0 1.442c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.282.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.282.11-.705.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.231 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.275-1.486.145-.373.319-.64.599-.92.28-.28.546.453.92-.598.282-.11.705.24 1.485-.276.843-.038 1.096-.047 3.232-.047zM8 4.658a3.342 3.342 0 1 0 0 6.684 3.342 3.342 0 0 0 0-6.684zm0 5.432a2.09 2.09 0 1 1 0-4.18 2.09 2.09 0 0 1 0 4.18zm4.35-4.748a.938.938 0 1 1-1.876 0 .938.938 0 0 1 1.876 0z"/></svg>;
+const DocumentIconSmall = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" /></svg>;
+
+const PlatformIcon: React.FC<{ bgColor: string; children: React.ReactNode }> = ({ bgColor, children }) => (
+    <div className={`w-7 h-7 rounded-full flex items-center justify-center text-white ${bgColor}`}>{children}</div>
+);
 
 interface DashboardProps {
     onNavClick: (tool: Tool, options?: { postType: string }) => void;
 }
 
 const Dashboard: React.FC<DashboardProps> = ({ onNavClick }) => {
+    
+    const adPlatformIcons = [
+        <PlatformIcon key="x" bgColor="bg-gray-900"><XLogoSmall /></PlatformIcon>,
+        <PlatformIcon key="insta" bgColor="bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500"><InstagramLogoSmall /></PlatformIcon>,
+        <PlatformIcon key="linkedin" bgColor="bg-blue-600"><LinkedInLogoSmall /></PlatformIcon>,
+    ];
+
+    const contentPlatformIcons = [
+        ...adPlatformIcons,
+        <PlatformIcon key="blog" bgColor="bg-orange-600"><DocumentIconSmall /></PlatformIcon>,
+    ];
+    
     return (
         <div className="w-full max-w-7xl mx-auto space-y-12 relative isolate">
             <HeroIllustration />
@@ -113,6 +134,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onNavClick }) => {
                     description="Transform your product photos into professional-grade image and video ads. Perfect for social media, marketing campaigns, and e-commerce."
                     buttonContent={<><ResearchIconSmall /> Generate Ads</>}
                     onButtonClick={() => onNavClick('ad-generator')}
+                    platformIcons={adPlatformIcons}
                 />
                 <PromoCard
                     tag="CONTENT TOOL"
@@ -121,6 +143,7 @@ const Dashboard: React.FC<DashboardProps> = ({ onNavClick }) => {
                     description="From viral X posts to in-depth blog articles, generate compelling content in seconds. Just provide a topic or URL and let our AI do the rest."
                     buttonContent={<><PenIconSmall /> Write Posts</>}
                     onButtonClick={() => onNavClick('social-posts')}
+                    platformIcons={contentPlatformIcons}
                 />
             </div>
         </div>
