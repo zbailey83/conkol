@@ -7,9 +7,12 @@ import type { Tool } from './types';
 
 const App: React.FC = () => {
   const [activeTool, setActiveTool] = useState<Tool>('dashboard');
+  const [initialSocialPostType, setInitialSocialPostType] = useState<string | null>(null);
 
-  const handleNavClick = useCallback((tool: Tool) => {
+  const handleNavClick = useCallback((tool: Tool, options?: { postType: string }) => {
     setActiveTool(tool);
+    // When navigating from sidebar, options is undefined, so this clears the initial type.
+    setInitialSocialPostType(options?.postType || null);
   }, []);
 
   const renderTool = () => {
@@ -21,7 +24,7 @@ const App: React.FC = () => {
       case 'ad-generator':
         return <AdGeneratorTool onBackToDashboard={backToDashboard} />;
       case 'social-posts':
-        return <SocialPostWriterTool onBackToDashboard={backToDashboard} />;
+        return <SocialPostWriterTool onBackToDashboard={backToDashboard} initialPostType={initialSocialPostType} />;
       default:
         return <Dashboard onNavClick={handleNavClick} />;
     }

@@ -9,6 +9,7 @@ type InputType = 'topic' | 'url';
 
 interface SocialPostWriterToolProps {
     onBackToDashboard: () => void;
+    initialPostType?: string | null;
 }
 
 const XLogo: React.FC = () => (
@@ -41,10 +42,10 @@ const OptionButton: React.FC<{
     </button>
 );
 
-const SocialPostWriterTool: React.FC<SocialPostWriterToolProps> = ({ onBackToDashboard }) => {
+const SocialPostWriterTool: React.FC<SocialPostWriterToolProps> = ({ onBackToDashboard, initialPostType }) => {
     const [inputType, setInputType] = useState<InputType>('topic');
     const [inputValue, setInputValue] = useState('');
-    const [postType, setPostType] = useState<string>(POST_TYPES.LINKEDIN);
+    const [postType, setPostType] = useState<string>(initialPostType || POST_TYPES.LINKEDIN);
     const [tone, setTone] = useState<string>(TONE_OPTIONS[0]);
     const [length, setLength] = useState<string>(LENGTH_OPTIONS[1]);
     
