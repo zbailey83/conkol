@@ -18,6 +18,8 @@ interface VideoGeneratorProps {
   sourceImage: UploadedFile | null;
   isCustomSource: boolean;
   onClearCustomSource: () => void;
+  isKeyReady: boolean;
+  onSelectKey: () => void;
 }
 
 const VideoPlaceholder: React.FC = () => (
@@ -101,7 +103,9 @@ const VideoGenerator: React.FC<VideoGeneratorProps> = (props) => {
         onGenerate, 
         disabled,
         videoDescription,
-        onVideoDescriptionChange
+        onVideoDescriptionChange,
+        isKeyReady,
+        onSelectKey
     } = props;
     const sourcePreviewUrl = sourceImage ? `data:${sourceImage.mimeType};base64,${sourceImage.base64}` : null;
 
@@ -147,9 +151,18 @@ const VideoGenerator: React.FC<VideoGeneratorProps> = (props) => {
                         />
                     </div>
                      <div className="pt-2">
-                        <Button onClick={onGenerate} disabled={disabled}>
-                            {props.isGenerating ? 'Generating...' : '🎬 Generate Video Ad'}
-                        </Button>
+                        {!isKeyReady ? (
+                            <div className="flex flex-col gap-2 text-center">
+                                <Button onClick={onSelectKey}>
+                                    Select API Key to Generate Video
+                                </Button>
+                                <p className="text-xs text-gray-500">Video generation requires a Google AI Studio API key with access to the Veo model. <a href="https://ai.google.dev/gemini-api/docs/billing" target="_blank" rel="noopener noreferrer" className="underline hover:text-cyan-400">Learn more about billing.</a></p>
+                            </div>
+                        ) : (
+                            <Button onClick={onGenerate} disabled={disabled}>
+                                {props.isGenerating ? 'Generating...' : '🎬 Generate Video Ad'}
+                            </Button>
+                        )}
                     </div>
                 </div>
 

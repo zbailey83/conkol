@@ -1,12 +1,9 @@
-
 import { GoogleGenAI, Modality } from "@google/genai";
 import type { UploadedFile } from '../types';
 
 if (!process.env.API_KEY) {
     throw new Error("API_KEY environment variable not set");
 }
-
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 const buildImagePrompt = (description: string, styles: string[], hasSecondaryImage: boolean, aspectRatio: string): string => {
   const styleText = styles.join(', ');
@@ -33,8 +30,9 @@ export const generateStyledImage = async (
   description: string,
   styles: string[],
   aspectRatio: string
-): Promise<{ imageUrl: string | null; text: string | null }> => {
-  const model = 'gemini-2.5-flash-image-preview';
+): Promise<{ imageUrl: string | null; }> => {
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  const model = 'gemini-2.5-flash-image';
 
   const prompt = buildImagePrompt(description, styles, !!secondaryImage, aspectRatio);
 
@@ -65,20 +63,17 @@ export const generateStyledImage = async (
         parts: parts,
       },
       config: {
-        responseModalities: [Modality.IMAGE, Modality.TEXT],
+        responseModalities: [Modality.IMAGE],
       },
     });
 
     let imageUrl: string | null = null;
-    let text: string | null = null;
     
     if (response.candidates && response.candidates.length > 0) {
         for (const part of response.candidates[0].content.parts) {
           if (part.inlineData) {
             const base64ImageBytes: string = part.inlineData.data;
             imageUrl = `data:${part.inlineData.mimeType};base64,${base64ImageBytes}`;
-          } else if (part.text) {
-            text = part.text;
           }
         }
     }
@@ -87,7 +82,7 @@ export const generateStyledImage = async (
         throw new Error("API did not return an image. It might be due to safety policies.");
     }
 
-    return { imageUrl, text };
+    return { imageUrl };
 
   } catch (error) {
     console.error("Error calling Gemini API for image generation:", error);
@@ -103,6 +98,7 @@ export const generateVideoAd = async (
   videoDescription: string,
   styles: string[]
 ): Promise<string> => {
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     let prompt = `Create a short, cinematic, UGC video ad based on this product. Ad context: "${videoDescription}"`;
 
     if (styles.length > 0) {
@@ -111,7 +107,7 @@ export const generateVideoAd = async (
 
     try {
         let operation = await ai.models.generateVideos({
-            model: 'veo-2.0-generate-001',
+            model: 'veo-3.1-fast-generate-preview',
             prompt: prompt,
             image: {
                 imageBytes: image.base64,
@@ -167,6 +163,7 @@ interface SocialPostParams {
 }
 
 export const generateSocialPost = async (params: SocialPostParams): Promise<string> => {
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     const { inputType, inputValue, postType, tone, length } = params;
 
     const inputContext = inputType === 'url' 
@@ -206,6 +203,7 @@ export const generateSocialPost = async (params: SocialPostParams): Promise<stri
 };
 
 export const generateBlogHeroImage = async (blogContent: string): Promise<string> => {
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     try {
         // Step 1: Generate a descriptive prompt from the blog content
         const promptForPrompt = `Analyze the following blog post and generate a concise, visually descriptive prompt for an AI image generator to create a relevant hero image. The prompt should be a single sentence or a short phrase focusing on the key visual elements. Only output the prompt itself, with no additional text or labels.

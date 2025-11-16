@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback, useEffect } from 'react';
 import Header from '../components/Header';
 import ImageUploader from '../components/ImageUploader';
@@ -9,6 +8,18 @@ import VideoGenerator from '../components/VideoGenerator';
 import { generateStyledImage, generateVideoAd } from '../services/geminiService';
 import { IMAGE_STYLE_OPTIONS, ASPECT_RATIO_OPTIONS } from '../constants';
 import type { UploadedFile } from '../types';
+
+// FIX: Define an AIStudio interface to avoid declaration conflicts with other global types.
+interface AIStudio {
+  hasSelectedApiKey: () => Promise<boolean>;
+  openSelectKey: () => Promise<void>;
+}
+
+declare global {
+  interface Window {
+    aistudio: AIStudio;
+  }
+}
 
 interface AdGeneratorToolProps {
   onBackToDashboard: () => void;
@@ -24,7 +35,6 @@ const AdGeneratorTool: React.FC<AdGeneratorToolProps> = ({ onBackToDashboard }) 
   const [selectedImageStyles, setSelectedImageStyles] = useState<string[]>([]);
   const [aspectRatio, setAspectRatio] = useState<string>('1:1');
   const [generatedImage, setGeneratedImage] = useState<string | null>(null);
-  const [generatedText, setGeneratedText] = useState<string | null>(null);
   const [isGeneratingImage, setIsGeneratingImage] = useState<boolean>(false);
   const [imageError, setImageError] = useState<string | null>(null);
 
@@ -35,6 +45,17 @@ const AdGeneratorTool: React.FC<AdGeneratorToolProps> = ({ onBackToDashboard }) 
   const [generatedVideoUrl, setGeneratedVideoUrl] = useState<string | null>(null);
   const [isGeneratingVideo, setIsGeneratingVideo] = useState<boolean>(false);
   const [videoError, setVideoError] = useState<string | null>(null);
+  const [isKeyReady, setIsKeyReady] = useState(false);
+
+  useEffect(() => {
+    const checkKey = async () => {
+      if (window.aistudio) {
+        const hasKey = await window.aistudio.hasSelectedApiKey();
+        setIsKeyReady(hasKey);
+      }
+    };
+    checkKey();
+  }, []);
 
   // Clean up blob URLs to prevent memory leaks
   useEffect(() => {
@@ -48,7 +69,6 @@ const AdGeneratorTool: React.FC<AdGeneratorToolProps> = ({ onBackToDashboard }) 
 
   const resetImageOutput = () => {
     setGeneratedImage(null);
-    setGeneratedText(null);
     setImageError(null);
   };
   
@@ -111,7 +131,6 @@ const AdGeneratorTool: React.FC<AdGeneratorToolProps> = ({ onBackToDashboard }) 
     try {
       const result = await generateStyledImage(primaryImage, secondaryImage, description, selectedImageStyles, aspectRatio);
       setGeneratedImage(result.imageUrl);
-      setGeneratedText(result.text);
     } catch (e) {
       console.error(e);
       setImageError(e instanceof Error ? e.message : "An unknown error occurred. Please check the console.");
@@ -129,6 +148,17 @@ const AdGeneratorTool: React.FC<AdGeneratorToolProps> = ({ onBackToDashboard }) 
     setVideoSourceImage(null);
   }
 
+  const handleSelectKey = async () => {
+    try {
+      await window.aistudio.openSelectKey();
+      // Assume success and optimistically update UI. `hasSelectedApiKey` might have a delay.
+      setIsKeyReady(true);
+    } catch (e) {
+      console.error("Error opening API key selection:", e);
+      setVideoError("Could not open API key selection dialog.");
+    }
+  };
+
   const handleGenerateVideo = useCallback(async () => {
     const sourceImage = videoSourceImage || primaryImage;
     if (!sourceImage || videoDescription.trim().length === 0) {
@@ -144,7 +174,13 @@ const AdGeneratorTool: React.FC<AdGeneratorToolProps> = ({ onBackToDashboard }) 
       setGeneratedVideoUrl(url);
     } catch (e) {
       console.error(e);
-      setVideoError(e instanceof Error ? e.message : "An unknown error occurred during video generation.");
+      const errorMessage = e instanceof Error ? e.message : "An unknown error occurred during video generation.";
+      if (errorMessage.includes("API key not valid")) {
+          setVideoError("Your API Key is invalid or does not have access to the Veo model. Please select a valid API key.");
+          setIsKeyReady(false); // Reset key state to re-trigger selection
+      } else {
+          setVideoError(errorMessage);
+      }
     } finally {
       setIsGeneratingVideo(false);
     }
@@ -247,7 +283,7 @@ const AdGeneratorTool: React.FC<AdGeneratorToolProps> = ({ onBackToDashboard }) 
                 <GeneratedImage
                   isGenerating={isGeneratingImage}
                   imageUrl={generatedImage}
-                  text={generatedText}
+                  text={null}
                   error={imageError}
                   onUseForVideo={handleSetVideoSource}
                 />
@@ -269,6 +305,8 @@ const AdGeneratorTool: React.FC<AdGeneratorToolProps> = ({ onBackToDashboard }) 
               sourceImage={currentVideoSource}
               isCustomSource={!!videoSourceImage}
               onClearCustomSource={handleClearVideoSource}
+              isKeyReady={isKeyReady}
+              onSelectKey={handleSelectKey}
             />
         </div>
       </div>
