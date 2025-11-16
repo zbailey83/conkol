@@ -11,15 +11,15 @@ interface PromoCardProps {
 
 const PromoCard: React.FC<PromoCardProps> = ({ tag, icon, title, description, buttonContent, onButtonClick }) => {
     return (
-        <div className="relative p-6 sm:p-8 rounded-2xl overflow-hidden bg-gradient-to-br from-teal-900/80 via-[#161B22] to-[#161B22] border border-teal-500/30 shadow-2xl shadow-teal-500/10">
-             <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-teal-500/10 blur-3xl rounded-full" />
+        <div className="relative p-6 sm:p-8 rounded-2xl overflow-hidden bg-gradient-to-br from-blue-900/80 via-[#161B22] to-[#161B22] border border-blue-500/30 shadow-2xl shadow-blue-500/10">
+             <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-blue-500/10 blur-3xl rounded-full" />
             <div className="relative flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-8">
                 <div className="flex-shrink-0 bg-white/5 p-3 rounded-xl border border-white/10 hidden sm:block">
                     {icon}
                 </div>
                 <div className="flex-grow">
                     <div className="flex items-center gap-3 mb-2">
-                        <span className="bg-teal-500/80 text-teal-50 font-bold text-xs px-3 py-1 rounded-full flex items-center gap-1.5">
+                        <span className="bg-blue-600/80 text-blue-50 font-bold text-xs px-3 py-1 rounded-full flex items-center gap-1.5">
                             <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
                             {tag}
                         </span>
