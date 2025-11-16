@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from 'react';
-import Sidebar from './components/Sidebar';
 import AdGeneratorTool from './pages/AdGeneratorTool';
 import SocialPostWriterTool from './pages/SocialPostWriterTool';
 import Dashboard from './pages/Dashboard';
@@ -31,9 +30,8 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="flex min-h-screen">
-      <Sidebar activeTool={activeTool} onNavClick={handleNavClick} />
-      <main className="flex-1 p-4 sm:p-6 lg:p-8">
+    <div className="min-h-screen">
+      <main className="p-4 sm:p-6 lg:p-8">
         {renderTool()}
       </main>
     </div>
