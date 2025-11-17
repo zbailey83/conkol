@@ -9,17 +9,8 @@ import { generateStyledImage, generateVideoAd } from '../services/geminiService'
 import { IMAGE_STYLE_OPTIONS, ASPECT_RATIO_OPTIONS } from '../constants';
 import type { UploadedFile } from '../types';
 
-// FIX: Define an AIStudio interface to avoid declaration conflicts with other global types.
-interface AIStudio {
-  hasSelectedApiKey: () => Promise<boolean>;
-  openSelectKey: () => Promise<void>;
-}
-
-declare global {
-  interface Window {
-    aistudio: AIStudio;
-  }
-}
+// FIX: The AIStudio interface and global declaration were moved to types.ts
+// to resolve declaration conflicts by having a single source of truth for this global type.
 
 interface AdGeneratorToolProps {
   onBackToDashboard: () => void;
@@ -194,7 +185,7 @@ const AdGeneratorTool: React.FC<AdGeneratorToolProps> = ({ onBackToDashboard }) 
     <>
       <div className="w-full max-w-7xl mx-auto">
          <div className="mb-4">
-            <button onClick={onBackToDashboard} className="flex items-center gap-2 text-sm text-cyan-400 hover:text-cyan-300 transition-colors font-semibold">
+            <button onClick={onBackToDashboard} className="flex items-center gap-2 text-sm text-cyan-600 dark:text-cyan-400 hover:text-cyan-500 dark:hover:text-cyan-300 transition-colors font-semibold">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
                 </svg>
@@ -209,9 +200,9 @@ const AdGeneratorTool: React.FC<AdGeneratorToolProps> = ({ onBackToDashboard }) 
           {/* Top Row */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Inputs Card */}
-            <div className="flex flex-col space-y-6 p-6 bg-[#161B22] border border-gray-800 rounded-2xl shadow-lg">
+            <div className="flex flex-col space-y-6 p-6 bg-white dark:bg-[#161B22] border border-gray-200 dark:border-gray-800 rounded-2xl shadow-lg">
               <div>
-                <h2 className="text-xl font-semibold text-gray-200 mb-3"><span className="text-cyan-400">1.</span> Upload Photos</h2>
+                <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-200 mb-3"><span className="text-cyan-500 dark:text-cyan-400">1.</span> Upload Photos</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <ImageUploader
                     value={primaryImage}
@@ -228,23 +219,23 @@ const AdGeneratorTool: React.FC<AdGeneratorToolProps> = ({ onBackToDashboard }) 
                 </div>
               </div>
               <div>
-                <h2 className="text-xl font-semibold text-gray-200 mb-3"><span className="text-cyan-400">2.</span> Describe Your Ad*</h2>
+                <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-200 mb-3"><span className="text-cyan-500 dark:text-cyan-400">2.</span> Describe Your Ad*</h2>
                 <textarea
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="e.g., A refreshing drink for a hot summer day, highlighting its natural ingredients."
-                  className="w-full h-24 p-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-colors"
+                  className="w-full h-24 p-3 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-colors"
                   maxLength={200}
                   aria-required="true"
                 />
-                <p className="text-right text-xs text-gray-400 mt-1">{description.length} / 200</p>
+                <p className="text-right text-xs text-gray-500 dark:text-gray-400 mt-1">{description.length} / 200</p>
               </div>
             </div>
             {/* Image Generation Card */}
-            <div className="flex flex-col space-y-4 p-6 bg-[#161B22] border border-gray-800 rounded-2xl shadow-lg">
+            <div className="flex flex-col space-y-4 p-6 bg-white dark:bg-[#161B22] border border-gray-200 dark:border-gray-800 rounded-2xl shadow-lg">
               <div>
-                <h2 className="text-xl font-semibold text-gray-200 mb-3"><span className="text-cyan-400">3.</span> Generate Ad Image</h2>
-                <p className="text-sm text-gray-400 mb-4">Choose up to 3 styles to apply to your ad image.</p>
+                <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-200 mb-3"><span className="text-cyan-500 dark:text-cyan-400">3.</span> Generate Ad Image</h2>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Choose up to 3 styles to apply to your ad image.</p>
                 <StyleSelector
                   styles={IMAGE_STYLE_OPTIONS}
                   selectedStyles={selectedImageStyles}
@@ -253,7 +244,7 @@ const AdGeneratorTool: React.FC<AdGeneratorToolProps> = ({ onBackToDashboard }) 
               </div>
 
               <div>
-                <p className="text-sm text-gray-400 mb-4">Select an aspect ratio for the output image.</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Select an aspect ratio for the output image.</p>
                 <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
                     {ASPECT_RATIO_OPTIONS.map(ratio => {
                         const isSelected = aspectRatio === ratio;
@@ -261,10 +252,10 @@ const AdGeneratorTool: React.FC<AdGeneratorToolProps> = ({ onBackToDashboard }) 
                             <button
                                 key={ratio}
                                 onClick={() => setAspectRatio(ratio)}
-                                className={`px-4 py-2.5 rounded-lg text-sm font-semibold text-center transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-cyan-500
+                                className={`px-4 py-2.5 rounded-lg text-sm font-semibold text-center transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-800 focus:ring-cyan-500
                                     ${isSelected
                                         ? 'bg-cyan-500 text-white shadow-md'
-                                        : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                                        : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-100 dark:border-transparent dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
                                     }`}
                             >
                                 {ratio}

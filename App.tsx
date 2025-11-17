@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import AdGeneratorTool from './pages/AdGeneratorTool';
 import SocialPostWriterTool from './pages/SocialPostWriterTool';
 import Dashboard from './pages/Dashboard';
+import ThemeToggle from './components/ThemeToggle';
 import type { Tool } from './types';
 
 const App: React.FC = () => {
@@ -34,6 +35,7 @@ const App: React.FC = () => {
       <main className="p-4 sm:p-6 lg:p-8">
         {renderTool()}
       </main>
+      <ThemeToggle />
     </div>
   );
 };

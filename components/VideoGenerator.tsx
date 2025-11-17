@@ -51,15 +51,15 @@ const VideoOutput: React.FC<Pick<VideoGeneratorProps, 'isGenerating' | 'videoUrl
         return (
           <div className="text-center">
             <Spinner />
-            <p className="mt-4 text-cyan-400">Generating your video ad...</p>
-            <p className="text-sm text-gray-400">{loadingMessage}</p>
+            <p className="mt-4 text-cyan-500 dark:text-cyan-400">Generating your video ad...</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">{loadingMessage}</p>
           </div>
         );
     }
     
     if (error) {
         return (
-          <div className="text-center text-red-400 bg-red-900/50 p-4 rounded-lg">
+          <div className="text-center text-red-700 bg-red-100 dark:text-red-400 dark:bg-red-900/50 p-4 rounded-lg">
             <h3 className="font-bold">Generation Failed</h3>
             <p className="mt-2 text-sm">{error}</p>
           </div>
@@ -79,7 +79,7 @@ const VideoOutput: React.FC<Pick<VideoGeneratorProps, 'isGenerating' | 'videoUrl
         
         return (
             <div className="w-full flex flex-col gap-4 items-center">
-                <video src={videoUrl} controls autoPlay loop className="max-h-[400px] w-full object-contain rounded-lg shadow-2xl bg-black" />
+                <video src={videoUrl} controls autoPlay loop className="max-h-[400px] w-full object-contain rounded-lg shadow-2xl bg-gray-200 dark:bg-black" />
                 <div className="w-full sm:w-2/3">
                     <Button onClick={handleDownloadVideo} variant="secondary">
                         ⬇️ Download Video
@@ -110,14 +110,14 @@ const VideoGenerator: React.FC<VideoGeneratorProps> = (props) => {
     const sourcePreviewUrl = sourceImage ? `data:${sourceImage.mimeType};base64,${sourceImage.base64}` : null;
 
     return (
-        <div className="flex flex-col space-y-4 p-6 bg-[#161B22] border border-gray-800 rounded-2xl shadow-lg">
-            <h2 className="text-xl font-semibold text-gray-200"><span className="text-cyan-400">4.</span> Generate a Video Ad</h2>
+        <div className="flex flex-col space-y-4 p-6 bg-white dark:bg-[#161B22] border border-gray-200 dark:border-gray-800 rounded-2xl shadow-lg">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-200"><span className="text-cyan-500 dark:text-cyan-400">4.</span> Generate a Video Ad</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Left: Controls */}
                 <div className="flex flex-col space-y-4">
                     <div>
-                        <h3 className="font-semibold text-gray-300 mb-2">Video Source</h3>
-                        <div className="relative w-32 h-32 bg-black/30 rounded-lg flex items-center justify-center border border-gray-700">
+                        <h3 className="font-semibold text-gray-800 dark:text-gray-300 mb-2">Video Source</h3>
+                        <div className="relative w-32 h-32 bg-gray-100 dark:bg-black/30 rounded-lg flex items-center justify-center border border-gray-200 dark:border-gray-700">
                             {sourcePreviewUrl ? (
                                 <img src={sourcePreviewUrl} alt="Video source preview" className="max-h-full max-w-full object-contain rounded-md" />
                             ) : (
@@ -125,25 +125,25 @@ const VideoGenerator: React.FC<VideoGeneratorProps> = (props) => {
                             )}
                         </div>
                         {isCustomSource && (
-                           <button onClick={onClearCustomSource} className="mt-2 text-xs text-cyan-400 hover:text-cyan-300 transition-colors">
+                           <button onClick={onClearCustomSource} className="mt-2 text-xs text-cyan-600 dark:text-cyan-400 hover:text-cyan-500 dark:hover:text-cyan-300 transition-colors">
                                 Reset to primary photo
                             </button>
                         )}
                     </div>
                     <div>
-                        <h3 className="font-semibold text-gray-300 mb-2">Video Prompt*</h3>
+                        <h3 className="font-semibold text-gray-800 dark:text-gray-300 mb-2">Video Prompt*</h3>
                         <textarea
                           value={videoDescription}
                           onChange={(e) => onVideoDescriptionChange(e.target.value)}
                           placeholder="e.g., An energetic, fast-paced video showing the product in action."
-                          className="w-full h-24 p-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-colors"
+                          className="w-full h-24 p-3 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-colors"
                           maxLength={200}
                           aria-required="true"
                         />
-                        <p className="text-right text-xs text-gray-400 mt-1">{videoDescription.length} / 200</p>
+                        <p className="text-right text-xs text-gray-500 dark:text-gray-400 mt-1">{videoDescription.length} / 200</p>
                     </div>
                     <div>
-                        <h3 className="font-semibold text-gray-300 mb-2">Video Styles (up to 3)</h3>
+                        <h3 className="font-semibold text-gray-800 dark:text-gray-300 mb-2">Video Styles (up to 3)</h3>
                          <StyleSelector
                             styles={VIDEO_STYLE_OPTIONS}
                             selectedStyles={selectedStyles}
@@ -156,7 +156,7 @@ const VideoGenerator: React.FC<VideoGeneratorProps> = (props) => {
                                 <Button onClick={onSelectKey}>
                                     Select API Key to Generate Video
                                 </Button>
-                                <p className="text-xs text-gray-500">Video generation requires a Google AI Studio API key with access to the Veo model. <a href="https://ai.google.dev/gemini-api/docs/billing" target="_blank" rel="noopener noreferrer" className="underline hover:text-cyan-400">Learn more about billing.</a></p>
+                                <p className="text-xs text-gray-500">Video generation requires a Google AI Studio API key with access to the Veo model. <a href="https://ai.google.dev/gemini-api/docs/billing" target="_blank" rel="noopener noreferrer" className="underline hover:text-cyan-500 dark:hover:text-cyan-400">Learn more about billing.</a></p>
                             </div>
                         ) : (
                             <Button onClick={onGenerate} disabled={disabled}>
@@ -167,7 +167,7 @@ const VideoGenerator: React.FC<VideoGeneratorProps> = (props) => {
                 </div>
 
                 {/* Right: Output */}
-                <div className="w-full h-full flex flex-col items-center justify-center bg-black/20 rounded-lg p-4 min-h-[300px]">
+                <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 dark:bg-black/20 rounded-lg p-4 min-h-[300px]">
                     <VideoOutput {...props} />
                 </div>
             </div>

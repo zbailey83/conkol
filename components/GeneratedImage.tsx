@@ -51,15 +51,15 @@ const GeneratedImage: React.FC<GeneratedImageProps> = ({ isGenerating, imageUrl,
       return (
         <div className="text-center">
           <Spinner />
-          <p className="mt-4 text-cyan-400">Generating your creative vision...</p>
-          <p className="text-sm text-gray-400">This may take a moment.</p>
+          <p className="mt-4 text-cyan-500 dark:text-cyan-400">Generating your creative vision...</p>
+          <p className="text-sm text-gray-500 dark:text-gray-400">This may take a moment.</p>
         </div>
       );
     }
 
     if (error) {
       return (
-        <div className="text-center text-red-400 bg-red-900/50 p-4 rounded-lg">
+        <div className="text-center text-red-700 bg-red-100 dark:text-red-400 dark:bg-red-900/50 p-4 rounded-lg">
           <h3 className="font-bold">Generation Failed</h3>
           <p className="mt-2 text-sm">{error}</p>
         </div>
@@ -72,7 +72,7 @@ const GeneratedImage: React.FC<GeneratedImageProps> = ({ isGenerating, imageUrl,
             <div className="flex-grow flex items-center justify-center w-full">
               <img src={imageUrl} alt="Generated ad" className="max-h-[400px] w-full object-contain rounded-lg shadow-2xl" />
             </div>
-            {text && <p className="text-sm text-gray-400 italic p-3 bg-black/30 rounded-md self-stretch text-center">{text}</p>}
+            {text && <p className="text-sm text-gray-600 dark:text-gray-400 italic p-3 bg-gray-200 dark:bg-black/30 rounded-md self-stretch text-center">{text}</p>}
             <div className="w-full flex flex-col sm:flex-row gap-2">
                  <Button onClick={handleUseImageForVideo}>
                     🎬 Use this Image to Generate Video
@@ -89,7 +89,7 @@ const GeneratedImage: React.FC<GeneratedImageProps> = ({ isGenerating, imageUrl,
   };
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center bg-black/20 rounded-lg p-4 min-h-[300px]">
+    <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 dark:bg-black/20 rounded-lg p-4 min-h-[300px]">
       {renderContent()}
     </div>
   );

@@ -24,17 +24,17 @@ const ToolLinkCard: React.FC<ToolLinkCardProps> = ({ icons, title, colorClasses,
                     {icons.map((icon, index) => (
                         <div
                             key={index}
-                            className="h-8 w-8 bg-white/20 rounded-full flex items-center justify-center ring-1 ring-white/10 backdrop-blur-sm shadow-md text-white"
+                            className="h-8 w-8 bg-black/10 dark:bg-white/20 rounded-full flex items-center justify-center ring-1 ring-white/10 backdrop-blur-sm shadow-md"
                         >
                             {icon}
                         </div>
                     ))}
                 </div>
-                <span className="ml-4 text-lg font-bold text-white tracking-wide">
+                <span className="ml-4 text-lg font-bold tracking-wide">
                     {title}
                 </span>
             </div>
-            <div className="mr-1 p-2 bg-black/20 rounded-xl group-hover:bg-black/30 transition-colors text-white">
+            <div className="mr-1 p-2 bg-black/20 rounded-xl group-hover:bg-black/30 transition-colors">
                 <ArrowIcon />
             </div>
         </button>

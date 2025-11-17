@@ -16,7 +16,7 @@ const DocumentIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-
 const KeyboardIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 8a2 2 0 00-2-2H4a2 2 0 00-2 2v4a2 2 0 002 2h12a2 2 0 002-2V8zM5 10a1 1 0 100 2h1a1 1 0 100-2H5zM8 10a1 1 0 100 2h1a1 1 0 100-2H8zM12 10a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" /></svg>;
 
 const HeroIllustration: React.FC = () => (
-    <div className="absolute inset-x-0 top-0 -z-10 opacity-20 transform-gpu overflow-hidden blur-3xl" aria-hidden="true">
+    <div className="absolute inset-x-0 top-0 -z-10 opacity-20 dark:opacity-20 transform-gpu overflow-hidden blur-3xl" aria-hidden="true">
         <div 
             className="relative left-1/2 -translate-x-1/2 aspect-[1.7] w-[80rem] bg-gradient-to-tr from-[#2dd4bf] to-[#0ea5e9]" 
             style={{ clipPath: 'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)' }}
@@ -25,8 +25,8 @@ const HeroIllustration: React.FC = () => (
 );
 
 // Icons for PromoCards
-const SparklesIconLarge = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-gray-300" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zm0 14a1 1 0 00-1 1v1a1 1 0 002 0v-1a1 1 0 00-1-1zm10-14a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zm0 14a1 1 0 00-1 1v1a1 1 0 002 0v-1a1 1 0 00-1-1zM9 5a1 1 0 00-1 1v8a1 1 0 002 0V6a1 1 0 00-1-1zm2-3a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zm-4 9a1 1 0 00-1 1v1a1 1 0 002 0v-1a1 1 0 00-1-1zm8-1a1 1 0 00-1 1v1a1 1 0 002 0v-1a1 1 0 00-1-1z" clipRule="evenodd" /></svg>;
-const DocumentIconLarge = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-gray-300" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" /></svg>;
+const SparklesIconLarge = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-gray-800 dark:text-gray-300" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M5 2a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zm0 14a1 1 0 00-1 1v1a1 1 0 002 0v-1a1 1 0 00-1-1zm10-14a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zm0 14a1 1 0 00-1 1v1a1 1 0 002 0v-1a1 1 0 00-1-1zM9 5a1 1 0 00-1 1v8a1 1 0 002 0V6a1 1 0 00-1-1zm2-3a1 1 0 00-1 1v1a1 1 0 002 0V3a1 1 0 00-1-1zm-4 9a1 1 0 00-1 1v1a1 1 0 002 0v-1a1 1 0 00-1-1zm8-1a1 1 0 00-1 1v1a1 1 0 002 0v-1a1 1 0 00-1-1z" clipRule="evenodd" /></svg>;
+const DocumentIconLarge = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-gray-800 dark:text-gray-300" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" /></svg>;
 const ResearchIconSmall = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" /></svg>;
 const PenIconSmall = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" /><path fillRule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clipRule="evenodd" /></svg>;
 
@@ -61,10 +61,10 @@ const Dashboard: React.FC<DashboardProps> = ({ onNavClick }) => {
         <div className="w-full max-w-7xl mx-auto space-y-12 relative isolate">
             <HeroIllustration />
             <div className="text-center pt-8">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-100">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-gray-100">
                     AI-Powered <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Marketing Suite</span>
                 </h1>
-                <p className="mt-6 text-lg max-w-2xl mx-auto text-gray-400">
+                <p className="mt-6 text-lg max-w-2xl mx-auto text-gray-500 dark:text-gray-400">
                     Your command center for creating stunning ad creatives and compelling social media content. Let's build something amazing.
                 </p>
             </div>
@@ -73,55 +73,55 @@ const Dashboard: React.FC<DashboardProps> = ({ onNavClick }) => {
                 <ToolLinkCard 
                     icons={[<SparklesIcon />, <ImageIcon />, <VideoIcon />]}
                     title="Ad Creative Generator"
-                    colorClasses="bg-cyan-600 hover:bg-cyan-500 focus:ring-cyan-400"
+                    colorClasses="text-white bg-cyan-600 hover:bg-cyan-500 focus:ring-cyan-400"
                     onClick={() => onNavClick('ad-generator')}
                 />
                  <ToolLinkCard 
                     icons={[<XLogo />, <ChatIcon />]}
                     title="Generate X Post"
-                    colorClasses="bg-gray-800 hover:bg-gray-700 focus:ring-gray-600"
+                    colorClasses="bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                     onClick={() => onNavClick('social-posts', { postType: POST_TYPES.X })}
                 />
                  <ToolLinkCard 
                     icons={[<XLogo />, <ImageIcon />]}
                     title="Generate X Image"
-                    colorClasses="bg-gray-800 hover:bg-gray-700 focus:ring-gray-600"
+                    colorClasses="bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                     onClick={() => onNavClick('ad-generator')}
                 />
                 <ToolLinkCard 
                     icons={[<XLogo />, <VideoIcon />]}
                     title="Generate X Video"
-                    colorClasses="bg-gray-800 hover:bg-gray-700 focus:ring-gray-600"
+                    colorClasses="bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                     onClick={() => onNavClick('ad-generator')}
                 />
                 <ToolLinkCard 
                     icons={[<InstagramLogo />, <ChatIcon />]}
                     title="Generate Instagram Post"
-                    colorClasses="bg-fuchsia-700 hover:bg-fuchsia-600 focus:ring-fuchsia-500"
+                    colorClasses="text-white bg-fuchsia-700 hover:bg-fuchsia-600 focus:ring-fuchsia-500"
                     onClick={() => onNavClick('social-posts', { postType: POST_TYPES.INSTAGRAM })}
                 />
                 <ToolLinkCard 
                     icons={[<InstagramLogo />, <ImageIcon />]}
                     title="Generate Instagram Image"
-                    colorClasses="bg-fuchsia-700 hover:bg-fuchsia-600 focus:ring-fuchsia-500"
+                    colorClasses="text-white bg-fuchsia-700 hover:bg-fuchsia-600 focus:ring-fuchsia-500"
                     onClick={() => onNavClick('ad-generator')}
                 />
                 <ToolLinkCard 
                     icons={[<InstagramLogo />, <VideoIcon />]}
                     title="Generate Reels Video"
-                    colorClasses="bg-fuchsia-700 hover:bg-fuchsia-600 focus:ring-fuchsia-500"
+                    colorClasses="text-white bg-fuchsia-700 hover:bg-fuchsia-600 focus:ring-fuchsia-500"
                     onClick={() => onNavClick('ad-generator')}
                 />
                 <ToolLinkCard 
                     icons={[<LinkedInLogo />, <ChatIcon />]}
                     title="Generate LinkedIn Post"
-                    colorClasses="bg-blue-700 hover:bg-blue-600 focus:ring-blue-500"
+                    colorClasses="text-white bg-blue-700 hover:bg-blue-600 focus:ring-blue-500"
                     onClick={() => onNavClick('social-posts', { postType: POST_TYPES.LINKEDIN })}
                 />
                  <ToolLinkCard 
                     icons={[<DocumentIcon />, <KeyboardIcon />]}
                     title="Write a Blog Post"
-                    colorClasses="bg-orange-600 hover:bg-orange-500 focus:ring-orange-500"
+                    colorClasses="text-white bg-orange-600 hover:bg-orange-500 focus:ring-orange-500"
                     onClick={() => onNavClick('social-posts', { postType: POST_TYPES.BLOG })}
                 />
             </div>
