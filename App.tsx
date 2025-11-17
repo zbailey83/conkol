@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import AdGeneratorTool from './pages/AdGeneratorTool';
 import SocialPostWriterTool from './pages/SocialPostWriterTool';
+import ContentCalendarTool from './pages/ContentCalendarTool';
 import Dashboard from './pages/Dashboard';
 import ThemeToggle from './components/ThemeToggle';
 import type { Tool } from './types';
@@ -25,6 +26,8 @@ const App: React.FC = () => {
         return <AdGeneratorTool onBackToDashboard={backToDashboard} />;
       case 'social-posts':
         return <SocialPostWriterTool onBackToDashboard={backToDashboard} initialPostType={initialSocialPostType} />;
+      case 'content-calendar':
+        return <ContentCalendarTool onBackToDashboard={backToDashboard} />;
       default:
         return <Dashboard onNavClick={handleNavClick} />;
     }

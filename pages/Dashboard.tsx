@@ -14,6 +14,7 @@ const InstagramLogo = () => <svg xmlns="http://www.w3.org/2000/svg" width="20" h
 const ChatIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM9 9a1 1 0 100-2 1 1 0 000 2zm7-1a1 1 0 10-2 0 1 1 0 002 0zm-7 4a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" /></svg>;
 const DocumentIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" /></svg>;
 const KeyboardIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M18 8a2 2 0 00-2-2H4a2 2 0 00-2 2v4a2 2 0 002 2h12a2 2 0 002-2V8zM5 10a1 1 0 100 2h1a1 1 0 100-2H5zM8 10a1 1 0 100 2h1a1 1 0 100-2H8zM12 10a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" /></svg>;
+const CalendarIcon = () => <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" /></svg>;
 
 const HeroIllustration: React.FC = () => (
     <div className="absolute inset-x-0 top-0 -z-10 opacity-20 dark:opacity-20 transform-gpu overflow-hidden blur-3xl" aria-hidden="true">
@@ -123,6 +124,12 @@ const Dashboard: React.FC<DashboardProps> = ({ onNavClick }) => {
                     title="Write a Blog Post"
                     colorClasses="text-white bg-orange-600 hover:bg-orange-500 focus:ring-orange-500"
                     onClick={() => onNavClick('social-posts', { postType: POST_TYPES.BLOG })}
+                />
+                <ToolLinkCard
+                    icons={[<CalendarIcon />]}
+                    title="Content Calendar"
+                    colorClasses="text-white bg-green-600 hover:bg-green-500 focus:ring-green-500"
+                    onClick={() => onNavClick('content-calendar')}
                 />
             </div>
 
