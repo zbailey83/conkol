@@ -4,7 +4,7 @@ export interface UploadedFile {
 }
 
 // FIX: Add a shared 'Tool' type to be used across components.
-export type Tool = 'ad-generator' | 'social-posts' | 'dashboard';
+export type Tool = 'ad-generator' | 'social-posts' | 'dashboard' | 'content-calendar';
 
 // FIX: Centralize AIStudio interface and global window declaration to avoid conflicts.
 declare global {
