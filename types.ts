@@ -15,7 +15,8 @@ declare global {
     openSelectKey: () => Promise<void>;
   }
 
-  interface Window {
-    aistudio: AIStudio;
-  }
+  // FIX: Changed window interface augmentation to a global variable declaration
+  // to resolve "All declarations of 'aistudio' must have identical modifiers" error.
+  // This suggests another part of the codebase might be declaring `var aistudio`.
+  var aistudio: AIStudio;
 }
